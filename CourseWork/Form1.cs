@@ -12,27 +12,31 @@ namespace CourseWork
 {
     public partial class Form1 : Form
     {
+        UserRepositary userRepositary;
         public Form1()
         {
             InitializeComponent();
+            userRepositary = new UserRepositary();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            DisplayUsers();
         }
 
-        public void DisplayStudents() // needs to be public so can be accessed from FrmStudent
+        public void DisplayUsers() 
         {
-            var students = studentRepositary.GetStudents();
-            lstVStudents.Items.Clear(); // clear the ListView before adding new items
-            foreach (var student in students)
+            var users = userRepositary.GetUser();
+            lstVUser.Items.Clear(); 
+            foreach (var user in users)
             {
-                ListViewItem item = new ListViewItem(student.StudentID.ToString());
-                item.SubItems.Add(student.FirstName); // subitems are used to add additional columns in ListView
-                item.SubItems.Add(student.LastName);
-                item.SubItems.Add(student.StudentDOB.ToShortDateString());
-                lstVStudents.Items.Add(item);
+                ListViewItem item = new ListViewItem(user.UserID.ToString());
+                item.SubItems.Add(user.UserName); 
+                item.SubItems.Add(user.Age.ToString());
+                item.SubItems.Add(user.Weight.ToString());
+                item.SubItems.Add(user.Height.ToString());
+                item.SubItems.Add(user.Gender);
+                lstVUser.Items.Add(item);
             }
         }
 

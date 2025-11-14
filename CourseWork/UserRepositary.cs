@@ -11,6 +11,10 @@ namespace CourseWork
     {
         string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\CourseWork.accdb";
 
+        internal static IEnumerable<object> GetUsers()
+        {
+            throw new NotImplementedException();
+        }
 
         public List<User> GetUser()
         {
@@ -31,7 +35,7 @@ namespace CourseWork
                         user.Weight = reader.GetInt32(3);
                         user.Height = reader.GetInt32(4);
                         user.Gender = reader.GetString(5);
-                        
+                        Users.Add(user);
                     }
                 }
             }
