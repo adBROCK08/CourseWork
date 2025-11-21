@@ -35,6 +35,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstVUser
@@ -81,11 +82,22 @@
             // 
             this.columnHeader6.Text = "Gender";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(104, 314);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 65);
+            this.btnEdit.TabIndex = 1;
+            this.btnEdit.Text = "Edit User";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.lstVUser);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -103,6 +115,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
 

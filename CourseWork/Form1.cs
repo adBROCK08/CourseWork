@@ -40,5 +40,10 @@ namespace CourseWork
             }
         }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            FrmUser frmUser = new FrmUser();
+            frmUser.Show();
+        }
     }
 }

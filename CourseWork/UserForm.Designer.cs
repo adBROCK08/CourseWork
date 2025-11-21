@@ -1,6 +1,6 @@
 ﻿namespace CourseWork
 {
-    partial class UserForm
+    partial class FrmUser
     {
         /// <summary>
         /// Required designer variable.
@@ -40,6 +40,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbUserID
@@ -49,6 +52,7 @@
             this.cmbUserID.Name = "cmbUserID";
             this.cmbUserID.Size = new System.Drawing.Size(131, 21);
             this.cmbUserID.TabIndex = 1;
+            this.cmbUserID.SelectedIndexChanged += new System.EventHandler(this.cmbUserID_SelectedIndexChanged);
             // 
             // txtAge
             // 
@@ -99,20 +103,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(200, 205);
+            this.label3.Location = new System.Drawing.Point(193, 205);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Weight";
+            this.label3.Text = "Weight (kg)";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(199, 231);
+            this.label4.Location = new System.Drawing.Point(194, 231);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Height";
+            this.label4.Text = "Height (cm)";
             // 
             // label5
             // 
@@ -139,11 +143,44 @@
             this.txtUserName.Size = new System.Drawing.Size(100, 20);
             this.txtUserName.TabIndex = 12;
             // 
-            // UserForm
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(196, 293);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 52);
+            this.btnAdd.TabIndex = 13;
+            this.btnAdd.Text = "Add new User";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(288, 293);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 52);
+            this.btnDelete.TabIndex = 14;
+            this.btnDelete.Text = "Delete User";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnUser
+            // 
+            this.btnUser.Location = new System.Drawing.Point(382, 293);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(75, 51);
+            this.btnUser.TabIndex = 15;
+            this.btnUser.Text = "Update User";
+            this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            // 
+            // FrmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(556, 487);
+            this.Controls.Add(this.btnUser);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -156,7 +193,7 @@
             this.Controls.Add(this.txtWeight);
             this.Controls.Add(this.txtAge);
             this.Controls.Add(this.cmbUserID);
-            this.Name = "UserForm";
+            this.Name = "FrmUser";
             this.Text = "UserForm";
             this.Load += new System.EventHandler(this.UserForm_Load);
             this.ResumeLayout(false);
@@ -178,5 +215,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUser;
     }
 }

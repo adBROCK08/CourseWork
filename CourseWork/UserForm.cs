@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace CourseWork
 {
-    public partial class UserForm : Form
+    public partial class FrmUser : Form
     {
         UserRepositary userRepositary;
-        public UserForm()
+        public FrmUser()
         {
             InitializeComponent();
             userRepositary = new UserRepositary();
@@ -21,7 +21,69 @@ namespace CourseWork
 
         private void UserForm_Load(object sender, EventArgs e)
         {
+            var users = userRepositary.GetUser(); // var used but could be List<Student> for clarity
+            cmbUserID.DisplayMember = "UserName";
+            cmbUserID.ValueMember = "UserID";
+            cmbUserID.DataSource = users;
+        }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            userRepositary.AddUser(new User
+            {
+                UserName = txtUserName.Text,
+                Age = int.Parse(txtAge.Text),
+                Weight = int.Parse(txtWeight.Text),
+                Height = int.Parse(txtHeight.Text),
+                Gender = txtGender.Text,
+
+            });
+        }
+
+        private void cmbUserID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            User user = userRepositary.GetFilteredUser(Convert.ToInt32(cmbUserID.SelectedValue));
+            if (user != null)
+            {
+                txtUserName.Text = user.UserName;
+                txtAge.Text = user.Age.ToString();
+                txtWeight.Text = user.Weight.ToString();
+                txtHeight.Text = user.Height.ToString();
+                txtGender.Text = user.Gender;
+            }
+            else
+            {
+                MessageBox.Show("User not found.");
+
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            userRepositary.Delete(Convert.ToInt32(cmbUserID.SelectedValue));
+            UpdateForms();
+        }
+
+        private void UpdateForms()
+        {
+            UserForm_Load(null, null);
+            (Application.OpenForms["Form1"] as Form1).DisplayUsers(); 
+
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            User user = new User
+            {
+                UserID = Convert.ToInt32(cmbUserID.SelectedValue),
+                UserName = txtUserName.Text,
+                Age = int.Parse(txtAge.Text),
+                Weight = int.Parse(txtWeight.Text),
+                Height = int.Parse(txtHeight.Text),
+                Gender = txtGender.Text,
+            };
+            userRepositary.UpdateUser(user);
+            UpdateForms();
         }
     }
 }
