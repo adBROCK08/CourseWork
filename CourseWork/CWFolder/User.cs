@@ -14,6 +14,10 @@ namespace CourseWork
         public int Weight { get; set; }
         public int Height { get; set; }
         public string Gender { get; set; }
+        public int CalorieGoal { get; set; }
+        
+
+
 
         public string FullName // used for combobox display 
         {

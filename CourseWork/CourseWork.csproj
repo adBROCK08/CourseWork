@@ -56,6 +56,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmfoodlog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmfoodlog.Designer.cs">
+      <DependentUpon>frmfoodlog.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUserInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,12 @@
     </Compile>
     <Compile Include="frmUserLog.Designer.cs">
       <DependentUpon>frmUserLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrivateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrivateUser.Designer.cs">
+      <DependentUpon>PrivateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,11 +93,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmfoodlog.resx">
+      <DependentUpon>frmfoodlog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUserInfo.resx">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUserLog.resx">
       <DependentUpon>frmUserLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrivateUser.resx">
+      <DependentUpon>PrivateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

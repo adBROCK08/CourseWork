@@ -13,7 +13,7 @@ namespace CourseWork
     {
         string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\CourseWork.accdb";
 
-        internal static IEnumerable<object> GetFood()
+        public List<Foods> GetFood()
         {
             List<Foods> Foods = new List<Foods>();
             string sql = "SELECT * FROM tblFoods";
@@ -27,7 +27,7 @@ namespace CourseWork
                     {
                         Foods food = new Foods();
                         food.FoodID = reader.GetInt32(0);
-                        food.FoodTypeID = reader.GetInt32(1);
+                        //food.FoodTypeID = reader.GetInt32(1);
                         food.FoodName = reader.GetString(2);
                         food.CaloriesPer100g = reader.GetInt32(3);
                         Foods.Add(food);
@@ -37,10 +37,7 @@ namespace CourseWork
             return Foods;
         }
 
-        internal static IEnumerable<object> GetFoods()
-        {
-            throw new NotImplementedException();
-        }
+       
 
     }
 }

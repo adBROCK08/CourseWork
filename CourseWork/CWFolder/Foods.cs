@@ -10,7 +10,7 @@ namespace CourseWork
     {
         public int FoodID { get; set; }
         public int FoodTypeID { get; set; }
-        public string FoodType { get; set; }
+        public string FoodName { get; set; }
         public int CaloriesPer100g { get; set; }
        
     }

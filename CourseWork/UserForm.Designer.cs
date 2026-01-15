@@ -43,6 +43,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUser = new System.Windows.Forms.Button();
+            this.txtCalorieGoal = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbUserID
@@ -145,7 +147,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(196, 293);
+            this.btnAdd.Location = new System.Drawing.Point(196, 337);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 52);
             this.btnAdd.TabIndex = 13;
@@ -155,7 +157,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(288, 293);
+            this.btnDelete.Location = new System.Drawing.Point(281, 337);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 52);
             this.btnDelete.TabIndex = 14;
@@ -165,7 +167,7 @@
             // 
             // btnUser
             // 
-            this.btnUser.Location = new System.Drawing.Point(382, 293);
+            this.btnUser.Location = new System.Drawing.Point(374, 338);
             this.btnUser.Name = "btnUser";
             this.btnUser.Size = new System.Drawing.Size(75, 51);
             this.btnUser.TabIndex = 15;
@@ -173,11 +175,29 @@
             this.btnUser.UseVisualStyleBackColor = true;
             this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
+            // txtCalorieGoal
+            // 
+            this.txtCalorieGoal.Location = new System.Drawing.Point(256, 289);
+            this.txtCalorieGoal.Name = "txtCalorieGoal";
+            this.txtCalorieGoal.Size = new System.Drawing.Size(100, 20);
+            this.txtCalorieGoal.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(186, 292);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Calorie Goal";
+            // 
             // FrmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 487);
+            this.ClientSize = new System.Drawing.Size(685, 487);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtCalorieGoal);
             this.Controls.Add(this.btnUser);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
@@ -218,5 +238,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUser;
+        private System.Windows.Forms.TextBox txtCalorieGoal;
+        private System.Windows.Forms.Label label7;
     }
 }
