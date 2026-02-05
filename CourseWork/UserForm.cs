@@ -36,6 +36,7 @@ namespace CourseWork
                 Weight = int.Parse(txtWeight.Text),
                 Height = int.Parse(txtHeight.Text),
                 Gender = txtGender.Text,
+                CalorieGoal = int.Parse(txtCalorieGoal.Text)
 
             });
         }
@@ -50,6 +51,7 @@ namespace CourseWork
                 txtWeight.Text = user.Weight.ToString();
                 txtHeight.Text = user.Height.ToString();
                 txtGender.Text = user.Gender;
+                txtCalorieGoal.Text = user.CalorieGoal.ToString();
             }
             else
             {
@@ -81,6 +83,7 @@ namespace CourseWork
                 Weight = int.Parse(txtWeight.Text),
                 Height = int.Parse(txtHeight.Text),
                 Gender = txtGender.Text,
+                CalorieGoal = int.Parse(txtCalorieGoal.Text),
             };
             userRepositary.UpdateUser(user);
             UpdateForms();

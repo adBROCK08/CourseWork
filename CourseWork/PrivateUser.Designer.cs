@@ -1,6 +1,6 @@
 ﻿namespace CourseWork
 {
-    partial class PrivateUser
+    partial class FrmPrivateUser
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.txtConsumed = new System.Windows.Forms.TextBox();
-            this.txtGoal = new System.Windows.Forms.TextBox();
+            this.txtCalorieGoal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -42,12 +42,12 @@
             this.txtConsumed.TabIndex = 0;
             this.txtConsumed.TextChanged += new System.EventHandler(this.txtConsumed_TextChanged);
             // 
-            // txtGoal
+            // txtCalorieGoal
             // 
-            this.txtGoal.Location = new System.Drawing.Point(314, 166);
-            this.txtGoal.Name = "txtGoal";
-            this.txtGoal.Size = new System.Drawing.Size(100, 20);
-            this.txtGoal.TabIndex = 1;
+            this.txtCalorieGoal.Location = new System.Drawing.Point(314, 166);
+            this.txtCalorieGoal.Name = "txtCalorieGoal";
+            this.txtCalorieGoal.Size = new System.Drawing.Size(100, 20);
+            this.txtCalorieGoal.TabIndex = 1;
             // 
             // label1
             // 
@@ -67,16 +67,16 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "CALORIE GOAL";
             // 
-            // PrivateUser
+            // FrmPrivateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtGoal);
+            this.Controls.Add(this.txtCalorieGoal);
             this.Controls.Add(this.txtConsumed);
-            this.Name = "PrivateUser";
+            this.Name = "FrmPrivateUser";
             this.Text = "PrivateUser";
             this.Load += new System.EventHandler(this.PrivateUser_Load);
             this.ResumeLayout(false);
@@ -87,7 +87,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtConsumed;
-        private System.Windows.Forms.TextBox txtGoal;
+        private System.Windows.Forms.TextBox txtCalorieGoal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }

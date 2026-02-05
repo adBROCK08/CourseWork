@@ -51,7 +51,8 @@ namespace CourseWork
 
         private void Btn_Click(object sender, EventArgs e)
         {
-            
+            FrmPrivateUser frmPrivateUser = new FrmPrivateUser();
+            frmPrivateUser.Show();
         }
     }
 }

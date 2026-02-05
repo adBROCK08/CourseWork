@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace CourseWork
 {
-    public partial class PrivateUser : Form
+    public partial class FrmPrivateUser : Form
     {
         UserRepositary userRepositary;
-        public PrivateUser()
+        public FrmPrivateUser()
         {
             InitializeComponent();
             userRepositary = new UserRepositary();
@@ -26,6 +26,7 @@ namespace CourseWork
 
         private void DisplayCalories()
         {
+            
             
         }
 
