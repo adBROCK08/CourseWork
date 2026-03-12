@@ -119,6 +119,7 @@ namespace CourseWork
         public List<FoodLog> GetFoodLog()
         {
             List<FoodLog> FoodLog = new List<FoodLog>();
+
             string sql = "SELECT * FROM tblFoodLog";
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
