@@ -13,29 +13,31 @@ namespace CourseWork
     public partial class frmfoodlog : Form
     {
         FoodRepositary foodRepositary;
-        public frmfoodlog()
+        User userObj;
+        public frmfoodlog(User _userObj)
         {
             InitializeComponent();
             foodRepositary = new FoodRepositary();
+            userObj = _userObj;
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-            AddButtons();
+            
         }
 
         private void AddButtons()
         {
-            var users = foodRepositary.GetFood();
-            foreach (var item in users)
+            var foodList = foodRepositary.GetFood();
+            foreach (var foodItem in foodList)
             {
                 Button btn = new Button();
                 btn.BackColor = Color.Lime;
                 btn.ForeColor = Color.Black;
                 btn.Size = new Size(100, 90);
                 btn.Visible = true;
-                btn.Tag = item.FoodID;
-                btn.Text = item.FoodName;
+                btn.Tag = foodItem;
+                btn.Text = foodItem.FoodName;
                 btn.Name = "btn_ ";
                 btn.Click += Btn_Click; ;
                 flpFood.Controls.Add(btn);
@@ -44,9 +46,21 @@ namespace CourseWork
 
         private void Btn_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Button btn = (Button)sender;
+            Foods foodObj = (Foods)btn.Tag;
+            int grams = Convert.ToInt32(txtGrams.Text);
+            int calories = grams * foodObj.CaloriesPer100g;
+            //CalculateCal calculateCal = new CalculateCal(foodObj, grams);
+            FoodLog foodLogObj = new FoodLog();
+            foodLogObj.FoodID = foodLogObj.FoodID;
+            foodLogObj.Grams = grams;
+            foodLogObj.UserID = userObj.UserID;
+            foodLogObj.LogDate = DateTime.Now.Date;
         }
 
-        
+        private void frmfoodlog_Load(object sender, EventArgs e)
+        {
+            AddButtons();
+        }
     }
 }

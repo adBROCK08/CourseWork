@@ -13,15 +13,17 @@ namespace CourseWork
     public partial class FrmPrivateUser : Form
     {
         UserRepositary userRepositary;
-        public FrmPrivateUser()
+        User userObj;
+        public FrmPrivateUser(User _userObj)
         {
             InitializeComponent();
             userRepositary = new UserRepositary();
+            userObj = _userObj;
         }
 
         private void PrivateUser_Load(object sender, EventArgs e)
         {
-            DisplayCalories();
+            txtCalorieGoal.Text = userObj.CalorieGoal.ToString();
         }
 
         private void DisplayCalories()
@@ -31,6 +33,17 @@ namespace CourseWork
         }
 
         private void txtConsumed_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnfoodlog_Click(object sender, EventArgs e)
+        {
+            //frmfoodlog frmfoodlog = new frmfoodlog();
+            //frmfoodlog.Show();
+        }
+
+        private void txtCalorieGoal_TextChanged(object sender, EventArgs e)
         {
 
         }

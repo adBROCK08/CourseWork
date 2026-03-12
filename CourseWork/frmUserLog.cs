@@ -41,7 +41,8 @@ namespace CourseWork
                 btn.ForeColor = Color.Black;
                 btn.Size = new Size(100, 90);
                 btn.Visible = true;
-                btn.Tag = item.UserID;
+                //btn.Tag = item.UserID;
+                btn.Tag = item;
                 btn.Text = item.UserName;
                 btn.Name = "btn_ ";
                 btn.Click += Btn_Click; ;
@@ -51,8 +52,13 @@ namespace CourseWork
 
         private void Btn_Click(object sender, EventArgs e)
         {
-            FrmPrivateUser frmPrivateUser = new FrmPrivateUser();
-            frmPrivateUser.Show();
+
+            Button btn = (Button)sender;
+            User userObj =(User)btn.Tag;
+            //FrmPrivateUser frmPrivateUser = new FrmPrivateUser(userObj);
+            //frmPrivateUser.Show();
+            frmfoodlog fl = new frmfoodlog(userObj);
+            fl.Show();
         }
     }
 }

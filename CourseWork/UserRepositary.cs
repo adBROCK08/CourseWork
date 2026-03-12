@@ -90,7 +90,7 @@ namespace CourseWork
             return user;
         }
 
-        public void Delete(int userID)
+        public void DeleteUser(int userID)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this", "Delete", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)

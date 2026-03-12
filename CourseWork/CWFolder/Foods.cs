@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace CourseWork
 {
-    internal class Foods
+    public class Foods
     {
         public int FoodID { get; set; }
-        public int FoodTypeID { get; set; }
         public string FoodName { get; set; }
         public int CaloriesPer100g { get; set; }
-       
+        public int FoodTypeID { get; set; }
     }
 }

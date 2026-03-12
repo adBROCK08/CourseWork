@@ -21,7 +21,7 @@ namespace CourseWork
 
         private void UserForm_Load(object sender, EventArgs e)
         {
-            var users = userRepositary.GetUser(); // var used but could be List<Student> for clarity
+            var users = userRepositary.GetUser(); 
             cmbUserID.DisplayMember = "UserName";
             cmbUserID.ValueMember = "UserID";
             cmbUserID.DataSource = users;
@@ -62,7 +62,7 @@ namespace CourseWork
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            userRepositary.Delete(Convert.ToInt32(cmbUserID.SelectedValue));
+            userRepositary.DeleteUser(Convert.ToInt32(cmbUserID.SelectedValue));
             UpdateForms();
         }
 
@@ -75,17 +75,15 @@ namespace CourseWork
 
         private void btnUser_Click(object sender, EventArgs e)
         {
-            User user = new User
-            {
-                UserID = Convert.ToInt32(cmbUserID.SelectedValue),
-                UserName = txtUserName.Text,
-                Age = int.Parse(txtAge.Text),
-                Weight = int.Parse(txtWeight.Text),
-                Height = int.Parse(txtHeight.Text),
-                Gender = txtGender.Text,
-                CalorieGoal = int.Parse(txtCalorieGoal.Text),
-            };
-            userRepositary.UpdateUser(user);
+            User userObject = new User();
+            userObject.UserID = Convert.ToInt32(cmbUserID.SelectedValue);
+            userObject.UserName = txtUserName.Text;
+            userObject.Age = int.Parse(txtAge.Text);
+            userObject.Weight = int.Parse(txtWeight.Text);
+            userObject.Height = int.Parse(txtHeight.Text);
+            userObject.Gender = txtGender.Text;
+            userObject.CalorieGoal = int.Parse(txtCalorieGoal.Text);
+            userRepositary.UpdateUser(userObject);
             UpdateForms();
         }
     }

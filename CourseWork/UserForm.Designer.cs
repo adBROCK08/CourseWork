@@ -147,7 +147,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(196, 337);
+            this.btnAdd.Location = new System.Drawing.Point(189, 337);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 52);
             this.btnAdd.TabIndex = 13;
