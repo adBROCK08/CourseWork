@@ -50,7 +50,7 @@ namespace CourseWork
             Foods foodObj = (Foods)btn.Tag;
             int grams = Convert.ToInt32(txtGrams.Text);
             int calories = grams * foodObj.CaloriesPer100g;
-            //CalculateCal calculateCal = new CalculateCal(foodObj, grams);
+            CalculateCal calculateCal = new CalculateCal(foodObj, grams);
             FoodLog foodLogObj = new FoodLog();
             foodLogObj.FoodID = foodLogObj.FoodID;
             foodLogObj.Grams = grams;
