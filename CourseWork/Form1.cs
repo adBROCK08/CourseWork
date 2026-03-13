@@ -15,6 +15,7 @@ namespace CourseWork
         UserRepositary userRepositary;
         public Form1()
         {
+
             InitializeComponent();
             userRepositary = new UserRepositary();
         }
