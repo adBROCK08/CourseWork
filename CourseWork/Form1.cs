@@ -37,6 +37,7 @@ namespace CourseWork
                 item.SubItems.Add(user.Weight.ToString());
                 item.SubItems.Add(user.Height.ToString());
                 item.SubItems.Add(user.Gender);
+                item.SubItems.Add(user.CalorieGoal.ToString());
                 lstVUser.Items.Add(item);
             }
         }
@@ -45,6 +46,23 @@ namespace CourseWork
         {
             FrmUser frmUser = new FrmUser();
             frmUser.Show();
+        }
+
+        private void btnEditFood_Click(object sender, EventArgs e)
+        {
+            FoodForm FoodForm = new FoodForm();
+            FoodForm.Show();
+        }
+
+        private void btnUserLog_Click(object sender, EventArgs e)
+        {
+            frmUserLog frmUserLog = new frmUserLog();
+            frmUserLog.Show();
+        }
+
+        private void lstVUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

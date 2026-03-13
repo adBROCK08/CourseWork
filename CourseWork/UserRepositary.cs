@@ -36,6 +36,7 @@ namespace CourseWork
                         user.Weight = reader.GetInt32(3);
                         user.Height = reader.GetInt32(4);
                         user.Gender = reader.GetString(5);
+                        user.CalorieGoal = reader.GetInt32(6);
                         Users.Add(user);
                     }
                 }
@@ -55,6 +56,7 @@ namespace CourseWork
                 cmd.Parameters.AddWithValue("@Weight", user.Weight);
                 cmd.Parameters.AddWithValue("@Height", user.Height);
                 cmd.Parameters.AddWithValue("@Gender", user.Gender);
+                cmd.Parameters.AddWithValue("@CalorieGoal", user.CalorieGoal);
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -82,6 +84,7 @@ namespace CourseWork
                             Weight = reader.GetInt32(3), 
                             Height = reader.GetInt32(4),
                             Gender = reader.GetString(5),
+                            CalorieGoal = reader.GetInt32(6),
                         };
                     }
                 }
@@ -115,7 +118,7 @@ namespace CourseWork
 
         public void UpdateUser(User user)
         {
-            string sql = "UPDATE tblUserInfo SET UserName = ?, Age = ?, Weight = ?, Height = ?, Gender = ? WHERE UserID = ?";
+            string sql = "UPDATE tblUserInfo SET UserName = ?, Age = ?, Weight = ?, Height = ?, Gender = ?, CalorieGoal = ?, WHERE UserID = ?";
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
@@ -124,6 +127,7 @@ namespace CourseWork
                 cmd.Parameters.AddWithValue("@Weight", user.Weight);
                 cmd.Parameters.AddWithValue("@Height", user.Height);
                 cmd.Parameters.AddWithValue("@Gender", user.Gender);
+                cmd.Parameters.AddWithValue("@CalorieGoal", user.CalorieGoal);
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
