@@ -48,14 +48,27 @@ namespace CourseWork
         {
             Button btn = (Button)sender;
             Foods foodObj = (Foods)btn.Tag;
+
             int grams = Convert.ToInt32(txtGrams.Text);
-            int calories = grams * foodObj.CaloriesPer100g;
-            CalculateCal calculateCal = new CalculateCal(foodObj, grams);
+
+            double calories = (foodObj.CaloriesPer100g / 100.0) * grams;
+
             FoodLog foodLogObj = new FoodLog();
-            foodLogObj.FoodID = foodLogObj.FoodID;
+            foodLogObj.FoodID = foodObj.FoodID; // FIXED
             foodLogObj.Grams = grams;
             foodLogObj.UserID = userObj.UserID;
             foodLogObj.LogDate = DateTime.Now.Date;
+
+            // SAVE TO DATABASE
+            FoodRepositary.AddFoodLog(foodLogObj);
+
+            // UPDATE TOTAL CALORIES
+            //double total = FoodRepositary.GetTotalCalories(userObj.UserID, DateTime.Now.Date);
+            //lblTotalCalories.Text = total.ToString("0") + " kcal";
+            FrmCalories form = new FrmCalories(userObj.UserID);
+            form.Show();
+
+
         }
 
         private void frmfoodlog_Load(object sender, EventArgs e)

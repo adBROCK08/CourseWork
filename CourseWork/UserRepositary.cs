@@ -118,7 +118,7 @@ namespace CourseWork
 
         public void UpdateUser(User user)
         {
-            string sql = "UPDATE tblUserInfo SET UserName = ?, Age = ?, Weight = ?, Height = ?, Gender = ?, CalorieGoal = ?, WHERE UserID = ?";
+            string sql = "UPDATE tblUserInfo SET UserName = ?, Age = ?, Weight = ?, Height = ?, Gender = ?, CalorieGoal = ? WHERE UserID = ?";
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
@@ -128,6 +128,7 @@ namespace CourseWork
                 cmd.Parameters.AddWithValue("@Height", user.Height);
                 cmd.Parameters.AddWithValue("@Gender", user.Gender);
                 cmd.Parameters.AddWithValue("@CalorieGoal", user.CalorieGoal);
+                cmd.Parameters.AddWithValue("@UserID", user.UserID);
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }

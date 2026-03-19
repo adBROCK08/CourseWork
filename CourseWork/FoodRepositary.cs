@@ -11,7 +11,7 @@ namespace CourseWork
 {
     internal class FoodRepositary
     {
-        string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\CourseWork.accdb";
+        private static string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\CourseWork.accdb";
 
         public List<Foods> GetFood()
         {
@@ -142,17 +142,57 @@ namespace CourseWork
             return FoodLog;
         }
 
-        public void AddFoodLog(FoodLog foodLog)
+       
+
+        public static void AddFoodLog(FoodLog log)
         {
-            string sql = "INSERT INTO tblFoodLog (Grams, LogDate) VALUES (?, ?)";
             using (OleDbConnection conn = new OleDbConnection(connectionString))
-            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
-                cmd.Parameters.AddWithValue("@Grams", foodLog.Grams);
-                cmd.Parameters.AddWithValue("@LogDate", foodLog.LogDate);
-                conn.Open();
-                cmd.ExecuteNonQuery();
+                string sql = "INSERT INTO tblFoodLog (FoodID, Grams, LogDate, UserID) VALUES (?, ?, ?, ?)";
+
+                using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@FoodID", log.FoodID);
+                    cmd.Parameters.AddWithValue("@Grams", log.Grams);
+                    cmd.Parameters.AddWithValue("@LogDate", log.LogDate);
+                    cmd.Parameters.AddWithValue("@UserID", log.UserID);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
+
+        public static double GetTotalCalories(int userID, DateTime date)
+        {
+            double total = 0;
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            {
+                string sql = @"
+                SELECT SUM((f.CaloriesPer100g / 100) * l.Grams)
+                FROM tblFoodLog l
+                INNER JOIN tblFoods f ON l.FoodID = f.FoodID
+                WHERE l.UserID = ? AND l.LogDate = ?";
+
+                using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@p1", userID);
+                    cmd.Parameters.AddWithValue("@p2", date);
+
+                    conn.Open();
+
+                    var result = cmd.ExecuteScalar();
+
+                    if (result != DBNull.Value && result != null)
+                    {
+                        total = Convert.ToDouble(result);
+                    }
+                }
+            }
+
+            return total;
+        }
+
     }
 }
