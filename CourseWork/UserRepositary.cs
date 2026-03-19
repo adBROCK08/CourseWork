@@ -29,10 +29,10 @@ namespace CourseWork
                 {
                     while (reader.Read())
                     {
-                        User user = new User(); 
+                        User user = new User();
                         user.UserID = reader.GetInt32(0);
-                        user.UserName = reader.GetString(1); 
-                        user.Age = reader.GetInt32(2); 
+                        user.UserName = reader.GetString(1);
+                        user.Age = reader.GetInt32(2);
                         user.Weight = reader.GetInt32(3);
                         user.Height = reader.GetInt32(4);
                         user.Gender = reader.GetString(5);
@@ -65,12 +65,12 @@ namespace CourseWork
         public User GetFilteredUser(int userID)
         {
             User user = null;
-            string sql = "SELECT * FROM tblUserInfo WHERE userid = ?"; 
+            string sql = "SELECT * FROM tblUserInfo WHERE userid = ?";
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@userid", userID); 
+                cmd.Parameters.AddWithValue("@userid", userID);
 
                 using (OleDbDataReader reader = cmd.ExecuteReader())
                 {
@@ -78,10 +78,10 @@ namespace CourseWork
                     {
                         user = new User
                         {
-                            UserID = reader.GetInt32(0), 
-                            UserName = reader.GetString(1), 
-                            Age = reader.GetInt32(2), 
-                            Weight = reader.GetInt32(3), 
+                            UserID = reader.GetInt32(0),
+                            UserName = reader.GetString(1),
+                            Age = reader.GetInt32(2),
+                            Weight = reader.GetInt32(3),
                             Height = reader.GetInt32(4),
                             Gender = reader.GetString(5),
                             CalorieGoal = reader.GetInt32(6),
@@ -102,7 +102,7 @@ namespace CourseWork
             }
             else if (dialogResult == DialogResult.No)
             {
-              
+
             }
 
             string sql = "DELETE FROM tblUserInfo WHERE UserID = ?";
@@ -134,6 +134,34 @@ namespace CourseWork
             }
         }
 
-    }
+    
 
+    public static int GetUserCalorieGoal(int userID)
+        {
+            int goal = 0;
+
+            string staticConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\CourseWork.accdb";
+            using (OleDbConnection conn = new OleDbConnection(staticConnectionString))
+            {
+                string sql = "SELECT CalorieGoal FROM tblUserInfo WHERE UserID = ?";
+
+                using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@p1", userID);
+
+                    conn.Open();
+
+                    var result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        goal = Convert.ToInt32(result);
+                    }
+                }
+            }
+
+            return goal;
+        }
+
+    }
 }

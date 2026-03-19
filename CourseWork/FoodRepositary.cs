@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -192,6 +193,49 @@ namespace CourseWork
             }
 
             return total;
+        }
+
+        public static DataTable GetFoodLogForDate(int userID, DateTime date)
+        {
+            DataTable table = new DataTable();
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            {
+                string sql = @"
+                SELECT l.logID, f.FoodName, l.Grams,(f.CaloriesPer100g / 100) * l.Grams AS Calories
+                FROM tblFoodLog l
+                INNER JOIN tblFoods f ON l.FoodID = f.FoodID
+                WHERE l.UserID = ? AND l.LogDate = ?";
+
+                using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@p1", userID);
+                    cmd.Parameters.AddWithValue("@p2", date);
+
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                    {
+                        adapter.Fill(table);
+                    }
+                }
+            }
+
+            return table;
+        }
+
+        public static void DeleteFoodLog(int LogID)
+        {
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            {
+                string sql = "DELETE FROM tblFoodLog WHERE LogID = ?";
+
+                using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@p1", LogID);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
     }

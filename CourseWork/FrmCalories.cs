@@ -11,20 +11,20 @@ using System.Windows.Forms;
 namespace CourseWork
 {
     
-    public partial class FrmCalories : Form
+    public partial class progressCalories : Form
     {
         FoodRepositary foodRepositary;
         private int userID;
         
 
-        public FrmCalories()
+        public progressCalories()
         {
             InitializeComponent();
             
             foodRepositary = new FoodRepositary();
         }
 
-        public FrmCalories(int userID)
+        public progressCalories(int userID)
         {
             InitializeComponent();
             this.userID = userID;
@@ -34,11 +34,7 @@ namespace CourseWork
 
         private void FrmCalories_Load(object sender, EventArgs e)
         {
-            double total = FoodRepositary.GetTotalCalories(userID, DateTime.Now.Date);
-
-            txtTotalCalories.Text = total.ToString("0") + " kcal";
-
-           
+            LoadData();
 
         }
 
@@ -49,7 +45,65 @@ namespace CourseWork
 
         private void btnFood_Click(object sender, EventArgs e)
         {
-            
+            if (dgvFoodLog.SelectedRows.Count > 0)
+            {
+                int LogID = Convert.ToInt32(
+                    dgvFoodLog.SelectedRows[0].Cells["LogID"].Value
+                );
+
+                FoodRepositary.DeleteFoodLog(LogID);
+
+                LoadData(); // refresh
+            }
+
+        }
+
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            DateTime selectedDate = dtpDate.Value.Date;
+
+            double total = FoodRepositary.GetTotalCalories(userID, selectedDate);
+            int goal = UserRepositary.GetUserCalorieGoal(userID);
+            double remaining = goal - total;
+
+            //txtDate.Text = selectedDate.ToShortDateString();
+            txtTotalCalories.Text = total.ToString("0") + " kcal";
+            txtGoal.Text = goal.ToString() + " kcal";
+            txtRemaining.Text = remaining.ToString("0") + " kcal left";
+
+            BarCalories.Maximum = goal;
+            BarCalories.Value = Math.Min((int)total, goal);
+
+            dgvFoodLog.DataSource = FoodRepositary.GetFoodLogForDate(userID, selectedDate);
+
+            // 🔴 warning (we'll explain next)
+            if (total > goal)
+            {
+                lblWarning.Text = "Over calorie goal!";
+                lblWarning.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblWarning.Text = "Within goal";
+                lblWarning.ForeColor = Color.Green;
+            }
+
+        }
+
+        private void btnAddFood_Click(object sender, EventArgs e)
+        {
+            frmfoodlog form = new frmfoodlog(userID);
+            form.ShowDialog(); // important
+
+            form.ShowDialog(); // important - wait for form to close before refreshing
+
+            LoadData(); // refresh after adding food
+
         }
     }
 }
