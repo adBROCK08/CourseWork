@@ -12,22 +12,21 @@ namespace CourseWork
 {
     public partial class frmfoodlog : Form
     {
-        FoodRepositary foodRepositary;
+        FoodRepositary foodRepositaryObj;
         User userObj;
         private int userID;
         //private DateTime logDate;
         public frmfoodlog(User _userObj)
         {
             InitializeComponent();
-            foodRepositary = new FoodRepositary();
+            foodRepositaryObj = new FoodRepositary();
             userObj = _userObj;
-            
         }
 
         public frmfoodlog(int userID)
         {
             InitializeComponent();
-            
+            foodRepositaryObj = new FoodRepositary();
             this.userID = userID;
             //this.logDate = logDate;
         }
@@ -38,7 +37,7 @@ namespace CourseWork
 
         private void AddButtons()
         {
-            var foodList = foodRepositary.GetFood();
+            var foodList = foodRepositaryObj.GetFood();
             foreach (var foodItem in foodList)
             {
                 Button btn = new Button();
@@ -64,15 +63,15 @@ namespace CourseWork
             double calories = (foodObj.CaloriesPer100g / 100.0) * grams;
 
             FoodLog foodLogObj = new FoodLog();
-            foodLogObj.FoodID = foodObj.FoodID; // FIXED
+            foodLogObj.FoodID = foodObj.FoodID; 
             foodLogObj.Grams = grams;
             foodLogObj.UserID = userObj.UserID;
             foodLogObj.LogDate = DateTime.Now.Date;
 
-            // SAVE TO DATABASE
+            
             FoodRepositary.AddFoodLog(foodLogObj);
 
-            // UPDATE TOTAL CALORIES
+            
             //double total = FoodRepositary.GetTotalCalories(userObj.UserID, DateTime.Now.Date);
             //lblTotalCalories.Text = total.ToString("0") + " kcal";
             progressCalories form = new progressCalories(userObj.UserID);
@@ -85,7 +84,6 @@ namespace CourseWork
         {
             AddButtons();
             
-
         }
     }
 }

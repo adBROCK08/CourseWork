@@ -53,7 +53,7 @@ namespace CourseWork
 
                 FoodRepositary.DeleteFoodLog(LogID);
 
-                LoadData(); // refresh
+                LoadData(); 
             }
 
         }
@@ -81,7 +81,7 @@ namespace CourseWork
 
             dgvFoodLog.DataSource = FoodRepositary.GetFoodLogForDate(userID, selectedDate);
 
-            // 🔴 warning (we'll explain next)
+            
             if (total > goal)
             {
                 lblWarning.Text = "Over calorie goal!";
@@ -98,11 +98,7 @@ namespace CourseWork
         private void btnAddFood_Click(object sender, EventArgs e)
         {
             frmfoodlog form = new frmfoodlog(userID);
-            form.ShowDialog(); // important
-
-            form.ShowDialog(); // important - wait for form to close before refreshing
-
-            LoadData(); // refresh after adding food
+            form.ShowDialog(); 
 
         }
     }

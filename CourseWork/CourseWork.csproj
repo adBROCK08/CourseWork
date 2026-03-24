@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculateCal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CalculateCal.Designer.cs">
-      <DependentUpon>CalculateCal.cs</DependentUpon>
-    </Compile>
     <Compile Include="CWFolder\FoodLog.cs" />
     <Compile Include="CWFolder\Foods.cs" />
     <Compile Include="FoodForm.cs">
@@ -73,35 +67,17 @@
     <Compile Include="FrmCalories.Designer.cs">
       <DependentUpon>FrmCalories.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmFood.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmFood.Designer.cs">
-      <DependentUpon>FrmFood.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmfoodlog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmfoodlog.Designer.cs">
       <DependentUpon>frmfoodlog.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUserInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUserInfo.Designer.cs">
-      <DependentUpon>frmUserInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmUserLog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmUserLog.Designer.cs">
       <DependentUpon>frmUserLog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PrivateUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PrivateUser.Designer.cs">
-      <DependentUpon>PrivateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,9 +89,6 @@
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserRepositary.cs" />
-    <EmbeddedResource Include="CalculateCal.resx">
-      <DependentUpon>CalculateCal.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FoodForm.resx">
       <DependentUpon>FoodForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,20 +98,11 @@
     <EmbeddedResource Include="FrmCalories.resx">
       <DependentUpon>FrmCalories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmFood.resx">
-      <DependentUpon>FrmFood.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmfoodlog.resx">
       <DependentUpon>frmfoodlog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUserInfo.resx">
-      <DependentUpon>frmUserInfo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmUserLog.resx">
       <DependentUpon>frmUserLog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PrivateUser.resx">
-      <DependentUpon>PrivateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
