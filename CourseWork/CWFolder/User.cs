@@ -15,7 +15,10 @@ namespace CourseWork
         public int Height { get; set; }
         public string Gender { get; set; }
         public int CalorieGoal { get; set; }
-        
+        public string Password { get; set; }
+        public string Role { get; set; }
+
+
 
 
 

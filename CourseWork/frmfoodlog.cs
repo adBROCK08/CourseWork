@@ -34,7 +34,7 @@ namespace CourseWork
         {
             
         }
-
+        
         private void AddButtons()
         {
             var foodList = foodRepositaryObj.GetFood();
@@ -57,6 +57,7 @@ namespace CourseWork
         {
             Button btn = (Button)sender;
             Foods foodObj = (Foods)btn.Tag;
+            
 
             int grams = Convert.ToInt32(txtGrams.Text);
 

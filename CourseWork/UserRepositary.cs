@@ -35,8 +35,10 @@ namespace CourseWork
                         user.Age = reader.GetInt32(2);
                         user.Weight = reader.GetInt32(3);
                         user.Height = reader.GetInt32(4);
-                        user.Gender = reader.GetString(5);
+                        user.Gender = reader["Gender"].ToString();
                         user.CalorieGoal = reader.GetInt32(6);
+                        user.Password = reader.GetString(7);
+                        user.Role = reader.GetString(8);
                         Users.Add(user);
                     }
                 }
@@ -47,19 +49,25 @@ namespace CourseWork
 
         public void AddUser(User user)
         {
-            string sql = "INSERT INTO tblUserInfo (UserName, Age, Weight, Height, Gender) VALUES (?, ?, ?, ?, ?)";
+
+            string sql = @"INSERT INTO tblUserInfo 
+            (UserName, Age, Weight, Height, Gender, CalorieGoal, [Password], [Role]) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
-                cmd.Parameters.AddWithValue("@UserName", user.UserName);
-                cmd.Parameters.AddWithValue("@Age", user.Age);
-                cmd.Parameters.AddWithValue("@Weight", user.Weight);
-                cmd.Parameters.AddWithValue("@Height", user.Height);
-                cmd.Parameters.AddWithValue("@Gender", user.Gender);
-                cmd.Parameters.AddWithValue("@CalorieGoal", user.CalorieGoal);
+                cmd.Parameters.AddWithValue("@p1", user.UserName);
+                cmd.Parameters.AddWithValue("@p2", user.Age);
+                cmd.Parameters.AddWithValue("@p3", user.Weight);
+                cmd.Parameters.AddWithValue("@p4", user.Height);
+                cmd.Parameters.AddWithValue("@p5", user.Gender);
+                cmd.Parameters.AddWithValue("@p6", user.CalorieGoal);
+                cmd.Parameters.AddWithValue("@p7", user.Password);
+                cmd.Parameters.AddWithValue("@p8", user.Role);
+
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
+
         }
 
         public User GetFilteredUser(int userID)
@@ -163,5 +171,38 @@ namespace CourseWork
             return goal;
         }
 
+        
+
+        public static User Login(string username, string password)
+        {
+            User user = null;
+
+            string staticConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\CourseWork.accdb";
+            using (OleDbConnection conn = new OleDbConnection(staticConnectionString))
+            {
+                string sql = "SELECT * FROM tblUserInfo WHERE UserName = ? AND Password = ?";
+
+                using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@p1", username);
+                    cmd.Parameters.AddWithValue("@p2", password);
+
+                    conn.Open();
+
+                    var reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        user = new User();
+
+                        user.UserID = Convert.ToInt32(reader["UserID"]);
+                        user.UserName = reader["UserName"].ToString();
+                        user.Role = reader["Role"].ToString();
+                    }
+                }
+            }
+
+            return user;
+        }
     }
 }
