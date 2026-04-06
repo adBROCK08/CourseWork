@@ -57,7 +57,7 @@ namespace CourseWork
             User userObj =(User)btn.Tag;
             //FrmPrivateUser frmPrivateUser = new FrmPrivateUser(userObj);
             //frmPrivateUser.Show();
-            frmfoodlog fl = new frmfoodlog(userObj);
+            frmfoodlog fl = new frmfoodlog(userObj.UserID);
             fl.Show();
         }
     }

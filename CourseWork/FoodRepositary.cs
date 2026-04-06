@@ -80,26 +80,34 @@ namespace CourseWork
 
         public void DeleteFood(int foodID)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this", "Delete", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this food?","Delete Food",MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
             {
+                using (OleDbConnection conn = new OleDbConnection(connectionString))
+                {
+                    conn.Open();
 
+                    string sqlLogs = "DELETE FROM tblFoodLog WHERE FoodID = ?";
+                    using (OleDbCommand cmdLogs = new OleDbCommand(sqlLogs, conn))
+                    {
+                        cmdLogs.Parameters.AddWithValue("@FoodID", foodID);
+                        cmdLogs.ExecuteNonQuery();
+                    }
+
+                    string sqlFood = "DELETE FROM tblFoods WHERE FoodID = ?";
+                    using (OleDbCommand cmdFood = new OleDbCommand(sqlFood, conn))
+                    {
+                        cmdFood.Parameters.AddWithValue("@FoodID", foodID);
+                        cmdFood.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Food deleted successfully");
             }
-            else if (dialogResult == DialogResult.No)
-            {
-
-            }
-
-            string sql = "DELETE FROM tblFoods WHERE FoodID = ?";
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
-            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
-            {
-                cmd.Parameters.AddWithValue("@FoodID", foodID);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-
         }
+
+            
 
         public void UpdateFood(Foods food)
         {

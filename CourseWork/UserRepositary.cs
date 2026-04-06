@@ -55,14 +55,14 @@ namespace CourseWork
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
-                cmd.Parameters.AddWithValue("@p1", user.UserName);
-                cmd.Parameters.AddWithValue("@p2", user.Age);
-                cmd.Parameters.AddWithValue("@p3", user.Weight);
-                cmd.Parameters.AddWithValue("@p4", user.Height);
-                cmd.Parameters.AddWithValue("@p5", user.Gender);
-                cmd.Parameters.AddWithValue("@p6", user.CalorieGoal);
-                cmd.Parameters.AddWithValue("@p7", user.Password);
-                cmd.Parameters.AddWithValue("@p8", user.Role);
+                cmd.Parameters.AddWithValue("@UserName", user.UserName);
+                cmd.Parameters.AddWithValue("@Age", user.Age);
+                cmd.Parameters.AddWithValue("@Weight", user.Weight);
+                cmd.Parameters.AddWithValue("@Height", user.Height);
+                cmd.Parameters.AddWithValue("@Gender", user.Gender);
+                cmd.Parameters.AddWithValue("@CalorieGoal", user.CalorieGoal);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+                cmd.Parameters.AddWithValue("@Role", user.Role);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -91,8 +91,11 @@ namespace CourseWork
                             Age = reader.GetInt32(2),
                             Weight = reader.GetInt32(3),
                             Height = reader.GetInt32(4),
-                            Gender = reader.GetString(5),
+                            Gender = reader["Gender"].ToString(),
                             CalorieGoal = reader.GetInt32(6),
+                            Password = reader.GetString(7),
+                            Role = reader.GetString(8)
+                        
                         };
                     }
                 }
@@ -126,7 +129,7 @@ namespace CourseWork
 
         public void UpdateUser(User user)
         {
-            string sql = "UPDATE tblUserInfo SET UserName = ?, Age = ?, Weight = ?, Height = ?, Gender = ?, CalorieGoal = ? WHERE UserID = ?";
+            string sql = "UPDATE tblUserInfo SET UserName = ?, Age = ?, Weight = ?, Height = ?, Gender = ?, CalorieGoal = ?, [Password] = ?, [Role] = ? WHERE UserID = ?";
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
@@ -136,6 +139,8 @@ namespace CourseWork
                 cmd.Parameters.AddWithValue("@Height", user.Height);
                 cmd.Parameters.AddWithValue("@Gender", user.Gender);
                 cmd.Parameters.AddWithValue("@CalorieGoal", user.CalorieGoal);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+                cmd.Parameters.AddWithValue("@Role", user.Role);
                 cmd.Parameters.AddWithValue("@UserID", user.UserID);
                 conn.Open();
                 cmd.ExecuteNonQuery();

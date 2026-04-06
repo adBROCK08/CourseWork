@@ -31,40 +31,55 @@
             this.flpFood = new System.Windows.Forms.FlowLayoutPanel();
             this.txtGrams = new System.Windows.Forms.TextBox();
             this.lblGrams = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flpFood
             // 
-            this.flpFood.Location = new System.Drawing.Point(180, 49);
+            this.flpFood.Location = new System.Drawing.Point(270, 75);
+            this.flpFood.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.flpFood.Name = "flpFood";
-            this.flpFood.Size = new System.Drawing.Size(477, 313);
+            this.flpFood.Size = new System.Drawing.Size(716, 482);
             this.flpFood.TabIndex = 0;
             this.flpFood.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // txtGrams
             // 
-            this.txtGrams.Location = new System.Drawing.Point(684, 49);
+            this.txtGrams.Location = new System.Drawing.Point(90, 132);
+            this.txtGrams.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtGrams.Name = "txtGrams";
-            this.txtGrams.Size = new System.Drawing.Size(100, 20);
+            this.txtGrams.Size = new System.Drawing.Size(148, 26);
             this.txtGrams.TabIndex = 1;
             // 
             // lblGrams
             // 
             this.lblGrams.AutoSize = true;
-            this.lblGrams.Location = new System.Drawing.Point(684, 30);
+            this.lblGrams.Location = new System.Drawing.Point(86, 107);
+            this.lblGrams.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGrams.Name = "lblGrams";
-            this.lblGrams.Size = new System.Drawing.Size(37, 13);
+            this.lblGrams.Size = new System.Drawing.Size(57, 20);
             this.lblGrams.TabIndex = 2;
             this.lblGrams.Text = "Grams";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(418, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Enter the amount of grams then choose the desired food :";
+            // 
             // frmfoodlog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblGrams);
             this.Controls.Add(this.txtGrams);
             this.Controls.Add(this.flpFood);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmfoodlog";
             this.Text = "frmfoodlog";
             this.Load += new System.EventHandler(this.frmfoodlog_Load);
@@ -78,5 +93,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpFood;
         private System.Windows.Forms.TextBox txtGrams;
         private System.Windows.Forms.Label lblGrams;
+        private System.Windows.Forms.Label label1;
     }
 }

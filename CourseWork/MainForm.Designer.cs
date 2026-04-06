@@ -187,20 +187,20 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(741, 216);
+            this.label7.Location = new System.Drawing.Point(726, 216);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 20);
+            this.label7.Size = new System.Drawing.Size(90, 20);
             this.label7.TabIndex = 16;
-            this.label7.Text = "Weight";
+            this.label7.Text = "Weight (kg)";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(744, 268);
+            this.label8.Location = new System.Drawing.Point(727, 268);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 20);
+            this.label8.Size = new System.Drawing.Size(91, 20);
             this.label8.TabIndex = 17;
-            this.label8.Text = "Height";
+            this.label8.Text = "Height (cm)";
             // 
             // label9
             // 

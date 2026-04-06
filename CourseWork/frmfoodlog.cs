@@ -13,21 +13,16 @@ namespace CourseWork
     public partial class frmfoodlog : Form
     {
         FoodRepositary foodRepositaryObj;
-        User userObj;
-        private int userID;
+        
+        private int UserID;
         //private DateTime logDate;
-        public frmfoodlog(User _userObj)
-        {
-            InitializeComponent();
-            foodRepositaryObj = new FoodRepositary();
-            userObj = _userObj;
-        }
+       
 
-        public frmfoodlog(int userID)
+        public frmfoodlog(int UserID)
         {
             InitializeComponent();
             foodRepositaryObj = new FoodRepositary();
-            this.userID = userID;
+            this.UserID = UserID;
             //this.logDate = logDate;
         }
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -66,7 +61,7 @@ namespace CourseWork
             FoodLog foodLogObj = new FoodLog();
             foodLogObj.FoodID = foodObj.FoodID; 
             foodLogObj.Grams = grams;
-            foodLogObj.UserID = userObj.UserID;
+            foodLogObj.UserID = UserID;
             foodLogObj.LogDate = DateTime.Now.Date;
 
             
@@ -75,7 +70,7 @@ namespace CourseWork
             
             //double total = FoodRepositary.GetTotalCalories(userObj.UserID, DateTime.Now.Date);
             //lblTotalCalories.Text = total.ToString("0") + " kcal";
-            progressCalories form = new progressCalories(userObj.UserID);
+            progressCalories form = new progressCalories(UserID);
             form.Show();
 
 
