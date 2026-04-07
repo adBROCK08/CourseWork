@@ -106,24 +106,35 @@ namespace CourseWork
 
         public void DeleteUser(int userID)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this", "Delete", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
 
-            }
-            else if (dialogResult == DialogResult.No)
-            {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this user?","Delete",MessageBoxButtons.YesNo);
 
+            if (result == DialogResult.Yes)
+            {
+                using (OleDbConnection conn = new OleDbConnection(connectionString))  
+                {
+                    conn.Open();
+
+                     
+                    string sqlLogs = "DELETE FROM tblFoodLog WHERE UserID = ?";
+                    using (OleDbCommand cmdLogs = new OleDbCommand(sqlLogs, conn))
+                    {
+                        cmdLogs.Parameters.AddWithValue("?", userID);
+                        cmdLogs.ExecuteNonQuery();
+                    }
+
+                    
+                    string sqlUser = "DELETE FROM tblUserInfo WHERE UserID = ?";
+                    using (OleDbCommand cmdUser = new OleDbCommand(sqlUser, conn))
+                    {
+                        cmdUser.Parameters.AddWithValue("?", userID);
+                        cmdUser.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("User deleted successfully!");
             }
 
-            string sql = "DELETE FROM tblUserInfo WHERE UserID = ?";
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
-            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
-            {
-                cmd.Parameters.AddWithValue("@UserID", userID);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
 
         }
 
