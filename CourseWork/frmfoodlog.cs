@@ -38,7 +38,7 @@ namespace CourseWork
                 Button btn = new Button();
                 btn.BackColor = Color.Lime;
                 btn.ForeColor = Color.Black;
-                btn.Size = new Size(100, 90);
+                btn.Size = new Size(70, 60);
                 btn.Visible = true;
                 btn.Tag = foodItem;
                 btn.Text = foodItem.FoodName;
@@ -80,6 +80,18 @@ namespace CourseWork
         {
             AddButtons();
             
+        }
+
+        private void btnAddFoods_Click(object sender, EventArgs e)
+        {
+            FoodForm FoodForm = new FoodForm();
+            FoodForm.Show();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            progressCalories form = new progressCalories(UserID);
+            form.Show();
         }
     }
 }

@@ -33,6 +33,7 @@ namespace CourseWork
                 MessageBox.Show("Invalid login");
                 return;
             }
+            //Admin username is "Adrian Derecki" and password is "Adrian"
 
             if (user.Role == "User")
             {

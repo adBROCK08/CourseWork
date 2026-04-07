@@ -32,14 +32,16 @@
             this.txtGrams = new System.Windows.Forms.TextBox();
             this.lblGrams = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAddFoods = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flpFood
             // 
-            this.flpFood.Location = new System.Drawing.Point(270, 75);
+            this.flpFood.Location = new System.Drawing.Point(270, 63);
             this.flpFood.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.flpFood.Name = "flpFood";
-            this.flpFood.Size = new System.Drawing.Size(716, 482);
+            this.flpFood.Size = new System.Drawing.Size(716, 525);
             this.flpFood.TabIndex = 0;
             this.flpFood.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -70,11 +72,33 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Enter the amount of grams then choose the desired food :";
             // 
+            // btnAddFoods
+            // 
+            this.btnAddFoods.Location = new System.Drawing.Point(90, 233);
+            this.btnAddFoods.Name = "btnAddFoods";
+            this.btnAddFoods.Size = new System.Drawing.Size(128, 82);
+            this.btnAddFoods.TabIndex = 4;
+            this.btnAddFoods.Text = "Add more foods";
+            this.btnAddFoods.UseVisualStyleBackColor = true;
+            this.btnAddFoods.Click += new System.EventHandler(this.btnAddFoods_Click);
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(90, 379);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(128, 62);
+            this.btnReturn.TabIndex = 5;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
             // frmfoodlog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.Controls.Add(this.btnReturn);
+            this.Controls.Add(this.btnAddFoods);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblGrams);
             this.Controls.Add(this.txtGrams);
@@ -94,5 +118,7 @@
         private System.Windows.Forms.TextBox txtGrams;
         private System.Windows.Forms.Label lblGrams;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnAddFoods;
+        private System.Windows.Forms.Button btnReturn;
     }
 }

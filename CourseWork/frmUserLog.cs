@@ -39,7 +39,7 @@ namespace CourseWork
                 Button btn = new Button();
                 btn.BackColor = Color.Lime;
                 btn.ForeColor = Color.Black;
-                btn.Size = new Size(100, 90);
+                btn.Size = new Size(70, 60);
                 btn.Visible = true;
                 //btn.Tag = item.UserID;
                 btn.Tag = item;
